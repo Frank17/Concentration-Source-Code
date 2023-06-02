@@ -51,7 +51,3 @@ def freq_summarize(sents: list[list[str]]) -> dict[str, float]:
         ' '.join(sent): sum(rel_freqs.get(word, 0) for word in sent)
         for sent in sents
     }
-    
-    
-    
-    
