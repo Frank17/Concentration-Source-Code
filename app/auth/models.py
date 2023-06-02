@@ -43,11 +43,9 @@ def username_from_email(email):
 
 
 def is_new_user(email):
-    if email in {i['email'] for i in REF.get().values()}:
+    if email in {user['email'] for user in REF.get().values()}:
         raise UserAlreadyExistError
 
-
-# def get_from_id(id: int):
 
 def username_clash(username):
     return username in REF.get()
@@ -125,11 +123,11 @@ class OldUser(UserMixin):
                                 'id': self.uid,
                                 'login_status': status}
         })
-
         self.info = info_from_email(email)
 
         if error_flag:
             raise UsernameAlreadyExistError
+            
             
 class NewUser(OldUser):
     def __init__(
