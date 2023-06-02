@@ -46,9 +46,3 @@ class CosineSummarizer(BaseSummarizer):
 class FrequencySummarizer(BaseSummarizer):
     def _summarize(self, text):
         return freq_summarize(text)
-    
-    
-    
-    
-    
-    
