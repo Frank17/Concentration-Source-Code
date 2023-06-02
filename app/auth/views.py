@@ -18,14 +18,6 @@ def homepage():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    1. Get user's input email and password
-    2. Verify their identity and redirect to a new page
-        - If the user is new, redirect them to the signup page
-        - If the user enters the wrong pwd, ask them to enter another one
-        - If the user succeeds, redirect them to their profile page
-    """
-
     form = LoginForm()
 
     if form.validate_on_submit():
