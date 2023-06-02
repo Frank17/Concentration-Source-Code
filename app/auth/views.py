@@ -98,25 +98,17 @@ def profile():
             'email'), rform.get('blist')
         
         if blist is not None:
-            """
-            We basically need to transfer the block list from Flask to JS, where it will be
-            interpreted as the websites that the user wishes to block
-            """
             return jsonify(blist)
-
         
         if email:
             session['_user_id'] = email
-
         try:
             current_user.update_info(username=uname,
                                      email=email,
                                      block_list=blist)
         except UsernameAlreadyExistError:
             flash('Sorry, the username is already taken!')
-
         return redirect(request.path)
         
-
     return render_template('profile.html',
                            user_info=current_user.get_safe_info())
