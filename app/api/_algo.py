@@ -28,7 +28,8 @@ def get_sents(text: str) -> list[str]:
         sent = INVALID_CHAR_REGEX.sub('', sent)
         if sent:
             add_sent(' '.join([
-                _lemmatize(word) for word in sent.lower().split()
+                _lemmatize(word)
+                for word in sent.lower().split()
                 if word not in STOPWORDS
             ]))
     return cleaned_sents
@@ -37,7 +38,7 @@ def get_sents(text: str) -> list[str]:
 def cos_summarize(sents: list[str]) -> dict[str, float]:
     tfidf_pl = make_pipeline(
         # Hashing vec. is employed since it is more memory-efficient.
-        # When n_features is set to 2 ** 17, this approach is ≈4.5 times
+        # When n_features is set to 2^17, this approach is ≈4.5 times
         # slower than using TfidfVectorizer directly, which is acceptable.
         HashingVectorizer(lowercase=False, n_features=2**17, norm=None),
         TfidfTransformer()
