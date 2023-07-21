@@ -5,8 +5,7 @@ from .. import manager
 
 initialize_app(credentials.Certificate("FirebaseKey.json"),
                     {'databaseURL':
-                     'https://study-focus-project-default-rtdb.'
-                     'firebaseio.com/'}
+                     'secret'}
               )
 
 
